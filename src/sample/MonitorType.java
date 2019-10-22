@@ -1,5 +1,5 @@
 package sample;
 
 public enum MonitorType {
-  Type, LCD, LED
+  LCD, LED
 }

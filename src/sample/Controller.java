@@ -1,19 +1,13 @@
-/*Shane Miller
- 9/21/19
- Sprint 1 basis of GUI for imaginary facility that keeps track of products produced
- */
 
 package sample;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.Date;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 public class Controller {
@@ -29,6 +23,9 @@ public class Controller {
   public Statement stnt;
   @FXML
   public ChoiceBox<ItemType> cmbxItemType;
+  @FXML
+  private TextArea ProductLogtxtarea;
+
 
   /**
    * first method to run in the controller class.
@@ -43,6 +40,8 @@ public class Controller {
     cmbxItemType.getItems().setAll(ItemType.values());
     cmbxChoosequan.getSelectionModel().selectFirst();
     cmbxItemType.getSelectionModel().selectFirst();;
+    ProductionRecord PR = new ProductionRecord(0, 3, "1", new Date());
+    ProductLogtxtarea.setText(PR.toString());
   }
 
   /**

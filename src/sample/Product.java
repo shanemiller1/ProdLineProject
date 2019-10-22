@@ -18,6 +18,10 @@ public abstract class Product implements Item {
     this.Manufacturer = manufacturer;
   }
 
+  public Product() {
+
+  }
+
   public String toString(){
     return "Name: " + Name + "\n" + "Manufacturer: " + Manufacturer + "\n" + "Type: " + Type;
   }
@@ -40,6 +44,18 @@ public abstract class Product implements Item {
 
   public void setName(String name){
     Name = name;
+  }
+
+  public void setId(int id) {
+    Id = id;
+  }
+
+  public String getType() {
+    return Type;
+  }
+
+  public void setType(String type) {
+    Type = type;
   }
 }
 
