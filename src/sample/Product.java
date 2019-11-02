@@ -2,11 +2,11 @@ package sample;
 
 public abstract class Product implements Item {
   private int Id;
-  private String Type;
+  private ItemType Type;
   private String Manufacturer;
   private String Name;
 
-  Product(String name, String manufacturer, String type){
+  Product(String name, String manufacturer, ItemType type){
     this.Name = name;
     this.Manufacturer = manufacturer;
     this.Type = type;
@@ -50,17 +50,18 @@ public abstract class Product implements Item {
     Id = id;
   }
 
-  public String getType() {
+  public ItemType getType() {
     return Type;
   }
 
-  public void setType(String type) {
+  public void setType(ItemType type) {
     Type = type;
   }
 }
 
 class Widget extends Product{
-  public Widget(String name, String manufacturer, String type){
+  public Widget(String name, String manufacturer, ItemType type){
     super(name, manufacturer, type);
   }
+
 }

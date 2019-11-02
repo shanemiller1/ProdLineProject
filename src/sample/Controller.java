@@ -54,9 +54,10 @@ public class Controller {
     String name = txtProductName.textProperty().get();
     String manufacturer = txtManufacturer.textProperty().get();
     System.out.println("ProductName is:" + name + "\n" + "manufacturer is:" + manufacturer + "\n");
+    ItemType itemType = cmbxItemType.getValue();
     String sql = "INSERT INTO PRODUCT(NAME, TYPE, MANUFACTURER) VALUES  ('"
-        + "AUDIO'"
-        + ",'"
+        + itemType.getC()
+        + "','"
         + txtManufacturer.getText()
         + "','"
         + txtProductName.getText()

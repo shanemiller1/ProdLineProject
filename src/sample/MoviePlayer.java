@@ -5,17 +5,10 @@ public class MoviePlayer extends Product implements MultimediaController {
     private Screen screen;
     private MonitorType monitorType;
 
-    MoviePlayer(String name, String manufacturer, String type) {
-        super(name, manufacturer, type);
-        setType("VISUAL");
-
-    }
-
     MoviePlayer(String name, String manufacturer, Screen screen, MonitorType monitorType) {
         super(name, manufacturer);
-        super.setType("VISUAL");
-        setScreen(screen);
-        setMonitorType(monitorType);
+        this.screen = screen;
+        this.monitorType= monitorType;
     }
 
     @Override

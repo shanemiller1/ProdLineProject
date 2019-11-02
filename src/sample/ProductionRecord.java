@@ -7,12 +7,17 @@ public class ProductionRecord {
     private int productID;
     private String serialNumber;
     private Date dateProduced;
-
+    
     public ProductionRecord(int productID) {
         ProductionNum = 0;
         serialNumber = "0";
         dateProduced = new Date();
         this.productID = productID;
+    }
+
+    public ProductionRecord(Product productProduced, int itemCount) {
+        setSerialNum(productProduced.getManufacturer().substring(0,3) + productProduced.getType().getC() + "0000" + itemCount );
+        setProdDate(new Date());
     }
 
     @Override
@@ -52,6 +57,7 @@ public class ProductionRecord {
     public void setProductionNum(int productionNum) {
         ProductionNum = productionNum;
     }
+    
 
     public ProductionRecord(int ProductionNum, int productID, String serialNumber, Date dateProduced) {
         this.ProductionNum = ProductionNum;

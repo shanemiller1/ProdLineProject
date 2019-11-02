@@ -33,14 +33,7 @@ public class Main extends Application {
 
 
   public static void main(String[] args) {
-      /**
-       * Issue1
-       */
-    Product product1 = new Widget("iPod", "Apple", "AM");
-    System.out.println(product1.toString());
-    Product product2 = new Widget("Zune", "Microsoft", "AM");
-    System.out.println(product2.toString());
-
+    launch(args);
       /**
        * Issue2
        */
@@ -79,6 +72,7 @@ public class Main extends Application {
       /**
        * Issue4
        */
+      /*
       // test constructor used when creating production records from user interface
       Integer numProduced = 3;  // this will come from the combobox in the UI
 
@@ -103,7 +97,22 @@ public class Main extends Application {
 
       pr.setProdDate(new Date());
       System.out.println(pr.getProdDate());
+      */
 
-      launch(args);
+    /**
+     * Issue5
+     */
+    Product productProduced = new Widget("iPod", "Apple", ItemType.AUDIO);
+
+    // test constructor used when creating production records from user interface
+    int numProduced = 3;  // this will come from the combobox in the UI
+    int itemCount = 0;
+
+    for (int productionRunProduct = 0; productionRunProduct < numProduced; productionRunProduct++) {
+      ProductionRecord pr = new ProductionRecord(productProduced, itemCount++);
+      // using the iterator as the product id for testing
+      System.out.println(pr.toString());
+    }
   }
-}
+  }
+

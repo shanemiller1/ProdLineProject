@@ -31,7 +31,6 @@ public class AudioPlayer extends Product implements MultimediaController {
 
   @Override
   public String toString() {
-    super.setType("AUDIO");
     return super.toString() + "\nSupported Audio Formats: " + audioSpecification
         + "\nSupported Playlist Formats: " + mediaType;
   }
