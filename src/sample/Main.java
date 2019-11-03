@@ -16,62 +16,66 @@ import java.util.Date;
 
 public class Main extends Application {
 
-  /**
-   * starting point of a javafx program.
-   *
-   * @param primaryStage first thing the user sees.
-   * @throws Exception storing exception thrown.
-   * @author Shane Miller
-   */
-  @Override
-  public void start(Stage primaryStage) throws Exception {
-    Parent root = FXMLLoader.load(getClass().getResource("ProductionLineDashboard.fxml"));
-    primaryStage.setTitle("GUIProgramAlpha");
-    primaryStage.setScene(new Scene(root, 960, 540));
-    primaryStage.show();
-  }
-
-
-  public static void main(String[] args) {
-    launch(args);
     /**
-     * Issue2
+     * starting point of a javafx program.
+     *
+     * @param primaryStage first thing the user sees.
+     * @throws Exception storing exception thrown.
+     * @author Shane Miller
      */
-    AudioPlayer newProduct = new AudioPlayer("DP-X1A", "Onkyo", "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
-    System.out.println(newProduct);
-    newProduct.play();
-    newProduct.stop();
-    newProduct.next();
-    newProduct.previous();
-
-    /**
-     * Issue3a
-     */
-    Screen s1 = new Screen("600x400", 40, 22);
-    System.out.println(s1);
-
-    /**
-     * Issue3b
-     */
-    AudioPlayer newAudioProduct = new AudioPlayer("DP-X1A", "Onkyo",
-        "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
-    Screen newScreen = new Screen("720x480", 40, 22);
-    MoviePlayer newMovieProduct = new MoviePlayer("DBPOWER MK101", "OracleProduction", newScreen,
-        MonitorType.LCD);
-    ArrayList<MultimediaController> productList = new ArrayList<MultimediaController>();
-    productList.add(newAudioProduct);
-    productList.add(newMovieProduct);
-    for (MultimediaController p : productList) {
-      System.out.println(p);
-      p.play();
-      p.stop();
-      p.next();
-      p.previous();
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("ProductionLineDashboard.fxml"));
+        primaryStage.setTitle("GUIProgramAlpha");
+        primaryStage.setScene(new Scene(root, 960, 540));
+        primaryStage.show();
     }
 
     /**
-     * Issue4
+     * main method in main containing code for issues..
+     *
+     * @param args
      */
+    public static void main(String[] args) {
+        launch(args);
+        /**
+         * Issue2
+         */
+        AudioPlayer newProduct = new AudioPlayer("DP-X1A", "Onkyo", "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
+        System.out.println(newProduct);
+        newProduct.play();
+        newProduct.stop();
+        newProduct.next();
+        newProduct.previous();
+
+        /**
+         * Issue3a
+         */
+        Screen s1 = new Screen("600x400", 40, 22);
+        System.out.println(s1);
+
+        /**
+         * Issue3b
+         */
+        AudioPlayer newAudioProduct = new AudioPlayer("DP-X1A", "Onkyo",
+                "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
+        Screen newScreen = new Screen("720x480", 40, 22);
+        MoviePlayer newMovieProduct = new MoviePlayer("DBPOWER MK101", "OracleProduction", newScreen,
+                MonitorType.LCD);
+        ArrayList<MultimediaController> productList = new ArrayList<MultimediaController>();
+        productList.add(newAudioProduct);
+        productList.add(newMovieProduct);
+        for (MultimediaController p : productList) {
+            System.out.println(p);
+            p.play();
+            p.stop();
+            p.next();
+            p.previous();
+        }
+
+        /**
+         * Issue4
+         */
       /*
       // test constructor used when creating production records from user interface
       Integer numProduced = 3;  // this will come from the combobox in the UI
@@ -99,20 +103,20 @@ public class Main extends Application {
       System.out.println(pr.getProdDate());
       */
 
-    /**
-     * Issue5
-     */
-    Product productProduced = new Widget("iPod", "Apple", ItemType.AUDIO);
+        /**
+         * Issue5
+         */
+        Product productProduced = new Widget("iPod", "Apple", ItemType.AUDIO);
 
-    // test constructor used when creating production records from user interface
-    int numProduced = 3;  // this will come from the combobox in the UI
-    int itemCount = 0;
+        // test constructor used when creating production records from user interface
+        int numProduced = 3;  // this will come from the combobox in the UI
+        int itemCount = 0;
 
-    for (int productionRunProduct = 0; productionRunProduct < numProduced; productionRunProduct++) {
-      ProductionRecord pr = new ProductionRecord(productProduced, itemCount++);
-      // using the iterator as the product id for testing
-      System.out.println(pr.toString());
+        for (int productionRunProduct = 0; productionRunProduct < numProduced; productionRunProduct++) {
+            ProductionRecord pr = new ProductionRecord(productProduced, itemCount++);
+            // using the iterator as the product id for testing
+            System.out.println(pr.toString());
+        }
     }
-  }
 }
 
