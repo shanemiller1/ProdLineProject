@@ -37,7 +37,7 @@ public class Controller {
   @FXML
   private TableColumn<Product, String> nameCol;
   @FXML
-  private TableColumn<Product, String> manufacturerCol;//
+  private TableColumn<Product, String> manufacturerCol;
   @FXML
   private TableColumn<Product, String> typeCol;
   Connection connection = null;
