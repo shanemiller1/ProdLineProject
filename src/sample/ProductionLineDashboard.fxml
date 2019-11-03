@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
   <tabs>
     <Tab text="Product Line">
       <content>
@@ -44,10 +44,12 @@
                         <ChoiceBox fx:id="cmbxItemType" prefHeight="29.0" prefWidth="308.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Button fx:id="btnAp" mnemonicParsing="false" onAction="#message" text="Add Product" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="Existing Products" textFill="WHITE" GridPane.rowIndex="4" />
-                        <TableView prefHeight="140.0" prefWidth="578.0" GridPane.rowIndex="5">
+                        <TableView fx:id="tableView" prefHeight="140.0" prefWidth="578.0" GridPane.rowIndex="5">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
+                            <TableColumn fx:id="idCol" prefWidth="75.0" />
+                            <TableColumn fx:id="nameCol" prefWidth="75.0" />
+                              <TableColumn fx:id="manufacturerCol" prefWidth="75.0" />
+                              <TableColumn fx:id="typeCol" prefWidth="75.0" />
                           </columns>
                         </TableView>
                      </children>

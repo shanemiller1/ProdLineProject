@@ -34,9 +34,9 @@ public class Main extends Application {
 
   public static void main(String[] args) {
     launch(args);
-      /**
-       * Issue2
-       */
+    /**
+     * Issue2
+     */
     AudioPlayer newProduct = new AudioPlayer("DP-X1A", "Onkyo", "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
     System.out.println(newProduct);
     newProduct.play();
@@ -44,20 +44,20 @@ public class Main extends Application {
     newProduct.next();
     newProduct.previous();
 
-      /**
-       * Issue3a
-       */
+    /**
+     * Issue3a
+     */
     Screen s1 = new Screen("600x400", 40, 22);
     System.out.println(s1);
 
-      /**
-       * Issue3b
-       */
+    /**
+     * Issue3b
+     */
     AudioPlayer newAudioProduct = new AudioPlayer("DP-X1A", "Onkyo",
-            "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
+        "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
     Screen newScreen = new Screen("720x480", 40, 22);
     MoviePlayer newMovieProduct = new MoviePlayer("DBPOWER MK101", "OracleProduction", newScreen,
-            MonitorType.LCD);
+        MonitorType.LCD);
     ArrayList<MultimediaController> productList = new ArrayList<MultimediaController>();
     productList.add(newAudioProduct);
     productList.add(newMovieProduct);
@@ -69,9 +69,9 @@ public class Main extends Application {
       p.previous();
     }
 
-      /**
-       * Issue4
-       */
+    /**
+     * Issue4
+     */
       /*
       // test constructor used when creating production records from user interface
       Integer numProduced = 3;  // this will come from the combobox in the UI
@@ -114,5 +114,5 @@ public class Main extends Application {
       System.out.println(pr.toString());
     }
   }
-  }
+}
 
