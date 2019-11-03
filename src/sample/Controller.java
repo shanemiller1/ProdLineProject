@@ -40,7 +40,6 @@ public class Controller {
     private TableColumn<Product, String> manufacturerCol;
     @FXML
     private TableColumn<Product, String> typeCol;
-    Connection connection = null;
 
     ArrayList<Widget> productLine = new ArrayList<>();
     ObservableList<Widget> list = FXCollections.observableArrayList(productLine);
@@ -54,7 +53,7 @@ public class Controller {
     private void initialize() {
         initializeDB();
         initCol();
-        setupProductLineTable();
+        //setupProductLineTable();
         cmbxChoosequan.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
         cmbxChoosequan.setEditable(true);
         cmbxItemType.getItems().setAll(ItemType.values());
@@ -133,6 +132,7 @@ public class Controller {
         list.clear();
         String sql = "SELECT * FROM PRODUCT";
         try {
+            Connection connection = null;
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {

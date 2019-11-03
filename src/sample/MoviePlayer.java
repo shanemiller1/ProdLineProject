@@ -92,7 +92,6 @@ public class MoviePlayer extends Product implements MultimediaController {
     @Override
     public void previous() {
         System.out.println("Previous movie");
-
     }
 
     /**
@@ -101,6 +100,5 @@ public class MoviePlayer extends Product implements MultimediaController {
     @Override
     public void next() {
         System.out.println("Next movie");
-
     }
 }
