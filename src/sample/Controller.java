@@ -39,7 +39,7 @@ public class Controller {
   @FXML
   private TableColumn<Product, String> manufacturerCol;
   @FXML
-  private TableColumn<Product, String> typeCol;
+  private TableColumn<Product, String> typeCol;//
   Connection connection = null;
 
   ArrayList<Widget> productLine = new ArrayList<>();
