@@ -1,48 +1,46 @@
-
 package sample;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.Date;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
-import javax.xml.transform.Result;
+import java.lang.reflect.Type;
+import java.sql.Date;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Controller {
 
-    public Statement stnt;
+    private static Statement stnt;
+
     @FXML
-    public Button btnAp;
+    private TextField txtProductName;
+
     @FXML
-    public TextField txtProductName;
+    private TextField txtManufacturer;
+
     @FXML
-    public TextField txtManufacturer;
+    private ChoiceBox<?> cmbxItemType;
+
     @FXML
-    public ComboBox<String> cmbxChoosequan;
+    private Button btnAp;
+
     @FXML
-    public ChoiceBox<ItemType> cmbxItemType;
+    private TableView<Product> tableView;
+
+    @FXML
+    private ComboBox<Integer> cmbxChoosequan;
+
     @FXML
     private TextArea productLogtxtarea;
-    @FXML
-    private TableView<Widget> tableView;
-    @FXML
-    private TableColumn<Product, Integer> idCol;
-    @FXML
-    private TableColumn<Product, String> nameCol;
-    @FXML
-    private TableColumn<Product, String> manufacturerCol;
-    @FXML
-    private TableColumn<Product, String> typeCol;
-    Connection connection = null;
 
-    ArrayList<Widget> productLine = new ArrayList<>();
-    ObservableList<Widget> list = FXCollections.observableArrayList(productLine);
+    ArrayList<Product> productLine = new ArrayList<>();
 
     /**
      * first method to run in the controller class.
@@ -51,10 +49,7 @@ public class Controller {
      */
     @FXML
     private void initialize() {
-        initializeDB();
-        initCol();
-        setupProductLineTable();
-        cmbxChoosequan.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
+        cmbxChoosequan.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         cmbxChoosequan.setEditable(true);
         cmbxItemType.getItems().setAll(ItemType.values());
         cmbxChoosequan.getSelectionModel().selectFirst();
@@ -63,13 +58,8 @@ public class Controller {
         productLogtxtarea.setText(pr.toString());
     }
 
-    /**
-     * Method On clicking the button it adds a row to the table in the database.
-     *
-     * @param actionEvent stores user input from mouse event.
-     */
     @FXML
-    public void message(javafx.event.ActionEvent actionEvent) {
+    public void addProduct(javafx.event.ActionEvent actionEvent) {
         String name = txtProductName.textProperty().get();
         String manufacturer = txtManufacturer.textProperty().get();
         System.out.println("ProductName is:"
@@ -78,9 +68,9 @@ public class Controller {
                 + "manufacturer is:"
                 + manufacturer
                 + "\n");
-        ItemType itemType = cmbxItemType.getValue();
+        ItemType itemType = (ItemType) cmbxItemType.getValue();
         String sql = "INSERT INTO PRODUCT(NAME, TYPE, MANUFACTURER) VALUES  ('"
-                + itemType.getC()
+                + itemType.getCode()
                 + "','"
                 + txtManufacturer.getText()
                 + "','"
@@ -88,71 +78,13 @@ public class Controller {
                 + "');";
         try {
             System.out.println(sql);
-            stnt.executeUpdate(sql); //can be fixed with a prepared statement
+            stnt.executeUpdate(sql);
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * method initializes and connects the program to the database.
-     */
-    private void initializeDB() {
-        //noticed this is flagged by checkstyle but did not change this because it's a constant.
-        final String JDBC_DRIVER = "org.h2.Driver";
-        final String DB_URL = "jdbc:h2:./res/HRprodline";
-
-        //  Database credentials
-        final String USER = "";
-        final String PASS = "";
-        Connection conn = null;
-        //Statement stmt = null;
-
-        try {
-            // STEP 1: Register JDBC driver
-            Class.forName(JDBC_DRIVER);
-
-            //STEP 2: Open a connection
-            connection = DriverManager.getConnection(DB_URL, USER, PASS); //empty password
-
-            //STEP 3: Execute a query
-            stnt = conn.createStatement();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * method initialized columns and sets each property value to specified names.
-     */
-    public void initCol() {
-        idCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        manufacturerCol.setCellValueFactory(new PropertyValueFactory<>("Manufacturer"));
-        typeCol.setCellValueFactory(new PropertyValueFactory<>("Type"));
-    }
-
-    /**
-     * calls DB and selecting information from product to populate table view.
-     */
-    public void setupProductLineTable() {
-        list.clear();
-        String sql = "SELECT * FROM PRODUCT";
-        try {
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                int ID = rs.getInt("Id");
-                String NAME = rs.getString("Name");
-                String MANUFACTURER = rs.getString("Manufacturer");
-                String TYPE = rs.getString("Type");
-
-                list.add(new Widget(ID, NAME, MANUFACTURER, TYPE));
-            }
-            tableView.setItems(list);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Widget addProduct = new Widget(txtProductName.getText(), txtManufacturer.getText(), itemType);
+        productLine.add(addProduct);
+        Main.sqlExecute(sql);
+        tableView.getItems().addAll(addProduct);
     }
 }

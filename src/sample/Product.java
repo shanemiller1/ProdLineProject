@@ -63,7 +63,7 @@ public abstract class Product implements Item {
      * @param manufacturer
      * @param type
      */
-    public Product(int id, String name, String manufacturer, String type) {
+    public Product(int id, String name, String manufacturer, ItemType type) {
     }
 
     public String toString() {
@@ -153,17 +153,5 @@ class Widget extends Product {
      */
     public Widget(String name, String manufacturer, ItemType type) {
         super(name, manufacturer, type);
-    }
-
-    /**
-     * constructor for widget passing super class parameters.
-     *
-     * @param id
-     * @param name
-     * @param manufacturer
-     * @param type
-     */
-    public Widget(int id, String name, String manufacturer, String type) {
-        super(id, name, manufacturer, type);
     }
 }

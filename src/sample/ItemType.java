@@ -8,15 +8,14 @@ package sample;
 public enum ItemType {
     AUDIO("AU"), VISUAL("VI"), AUDIO_MOBILE("AM"), VISUAL_MOBILE("VM");
 
-    private String c;
+    private String code;
 
     /**
      * Ithem type setting string to C.
      *
-     * @param c
      */
-    ItemType(String c) {
-        this.c = c;
+    ItemType(String code) {
+        this.code = code;
     }
 
     /**
@@ -25,24 +24,24 @@ public enum ItemType {
      * @return
      */
     public String getType() {
-        return c;
+        return code;
     }
 
     /**
-     * getC method receives c variable for c.
+     * getcode method receives code variable for code.
      *
      * @return
      */
-    public String getC() {
-        return c;
+    public String getCode() {
+        return code;
     }
 
     /**
-     * setC method sets c variable for c.
+     * setcode method sets code variable for code.
      *
      * @return
      */
-    public void setC(String c) {
-        this.c = c;
+    public void setCode(String code) {
+        this.code = code;
     }
 }

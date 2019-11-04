@@ -32,7 +32,7 @@ public class ProductionRecord {
      * @param itemCount
      */
     public ProductionRecord(Product productProduced, int itemCount) {
-        setSerialNum(productProduced.getManufacturer().substring(0, 3) + productProduced.getType().getC() + "0000" + itemCount);
+        setSerialNum(productProduced.getManufacturer().substring(0, 3) + productProduced.getType().getCode() + "0000" + itemCount);
         setProdDate(new Date());
     }
 
