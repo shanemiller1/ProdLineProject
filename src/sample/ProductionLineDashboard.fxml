@@ -44,12 +44,12 @@
                         <ChoiceBox fx:id="cmbxItemType" prefHeight="29.0" prefWidth="308.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Button fx:id="btnAp" mnemonicParsing="false" onMouseClicked="#addProduct" text="Add Product" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="Existing Products" textFill="WHITE" GridPane.rowIndex="4" />
-                        <TableView fx:id="tableView" prefHeight="140.0" prefWidth="578.0" GridPane.rowIndex="5">
+                        <TableView fx:id="tableView" prefHeight="140.0" prefWidth="467.0" GridPane.rowIndex="5">
                           <columns>
-                            <TableColumn fx:id="idCol" prefWidth="75.0" />
-                            <TableColumn fx:id="nameCol" prefWidth="75.0" />
-                              <TableColumn fx:id="manufacturerCol" prefWidth="75.0" />
-                              <TableColumn fx:id="typeCol" prefWidth="74.0" />
+                            <TableColumn fx:id="idCol" prefWidth="29.0" text="Id" />
+                            <TableColumn fx:id="nameCol" prefWidth="85.0" text="Name" />
+                              <TableColumn fx:id="manufacturerCol" prefWidth="111.0" text="Manufacturer" />
+                              <TableColumn fx:id="typeCol" prefWidth="74.0" text="Type" />
                           </columns>
                         </TableView>
                      </children>

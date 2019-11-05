@@ -3,21 +3,19 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.lang.reflect.Type;
-import java.sql.Date;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Controller {
 
-    private static Statement stnt;
+    Statement statement;
 
     @FXML
     private TextField txtProductName;
@@ -26,7 +24,7 @@ public class Controller {
     private TextField txtManufacturer;
 
     @FXML
-    private ChoiceBox<?> cmbxItemType;
+    private ChoiceBox<ItemType> cmbxItemType;
 
     @FXML
     private Button btnAp;
@@ -39,6 +37,18 @@ public class Controller {
 
     @FXML
     private TextArea productLogtxtarea;
+
+    @FXML
+    private TableColumn<Integer, Product> idCol;
+
+    @FXML
+    private TableColumn<String, Product> nameCol;
+
+    @FXML
+    private TableColumn<String, Product> manufacturerCol;
+
+    @FXML
+    private TableColumn<String, Product> typeCol;
 
     ArrayList<Product> productLine = new ArrayList<>();
 
@@ -56,10 +66,27 @@ public class Controller {
         cmbxItemType.getSelectionModel().selectFirst();
         ProductionRecord pr = new ProductionRecord(0, 3, "1", new Date());
         productLogtxtarea.setText(pr.toString());
+        setupProdLineRecord();
     }
 
+    /**
+     * method that sets cell factory to necessary information.
+     */
+    public void setupProdLineRecord(){
+        ObservableList<Product> productList = FXCollections.observableArrayList();
+        idCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("Type"));
+        manufacturerCol.setCellValueFactory(new PropertyValueFactory<>("Manufacturer"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        tableView.setItems(productList);
+    }
+
+    /**
+     * Event handler to add product info when button clicked.
+     * @param event
+     */
     @FXML
-    public void addProduct(javafx.event.ActionEvent actionEvent) {
+    void addProduct(MouseEvent event) {
         String name = txtProductName.textProperty().get();
         String manufacturer = txtManufacturer.textProperty().get();
         System.out.println("ProductName is:"
@@ -69,22 +96,16 @@ public class Controller {
                 + manufacturer
                 + "\n");
         ItemType itemType = (ItemType) cmbxItemType.getValue();
-        String sql = "INSERT INTO PRODUCT(NAME, TYPE, MANUFACTURER) VALUES  ('"
+        String SQL = "INSERT INTO PRODUCT(NAME, TYPE, MANUFACTURER) VALUES  ('"
                 + itemType.getCode()
                 + "','"
                 + txtManufacturer.getText()
                 + "','"
                 + txtProductName.getText()
                 + "');";
-        try {
-            System.out.println(sql);
-            stnt.executeUpdate(sql);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Widget addProduct = new Widget(txtProductName.getText(), txtManufacturer.getText(), itemType);
+        Widget addProduct = new Widget(txtProductName.getText(), txtManufacturer.getText(), ItemType.AUDIO);
         productLine.add(addProduct);
-        Main.sqlExecute(sql);
         tableView.getItems().addAll(addProduct);
+
     }
 }
