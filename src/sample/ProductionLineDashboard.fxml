@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@prodLineStyle.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
   <tabs>
     <Tab text="Product Line">
       <content>
@@ -42,7 +42,7 @@
                         <Label text="Manufacturer" textFill="WHITE" GridPane.rowIndex="1" />
                         <Label text="Item Type" textFill="WHITE" GridPane.rowIndex="2" />
                         <ChoiceBox fx:id="cmbxItemType" prefHeight="29.0" prefWidth="308.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Button fx:id="btnAp" mnemonicParsing="false" onMouseClicked="#addProduct" text="Add Product" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Button fx:id="btnAp" mnemonicParsing="false" onMouseClicked="#addProduct" stylesheets="@prodLineStyle.css" text="Add Product" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="Existing Products" textFill="WHITE" GridPane.rowIndex="4" />
                         <TableView fx:id="tableView" prefHeight="140.0" prefWidth="467.0" GridPane.rowIndex="5">
                           <columns>
@@ -59,11 +59,11 @@
     </Tab>
     <Tab text="Produce">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+        <AnchorPane fx:id="rootPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="7.0" layoutY="14.0" text="Choose Product" />
-                  <ListView layoutX="14.0" layoutY="33.0" prefHeight="200.0" prefWidth="200.0" />
-                  <Label layoutX="254.0" layoutY="14.0" text="Choose Quantity" />
+                  <Label layoutX="7.0" layoutY="14.0" text="Choose Product" textFill="WHITE" />
+                  <ListView fx:id="listChooseProducts" layoutX="14.0" layoutY="33.0" prefHeight="200.0" prefWidth="200.0" />
+                  <Label layoutX="254.0" layoutY="14.0" text="Choose Quantity" textFill="WHITE" />
                   <ComboBox fx:id="cmbxChoosequan" layoutX="254.0" layoutY="33.0" prefWidth="150.0" />
                   <Button layoutX="436.0" layoutY="33.0" mnemonicParsing="false" text="Record Production" />
                </children></AnchorPane>

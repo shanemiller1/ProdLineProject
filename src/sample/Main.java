@@ -11,9 +11,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.Properties;
 
 public class Main extends Application {
     private static Statement stnt;
@@ -48,28 +50,33 @@ public class Main extends Application {
      * method initializes and connects the program to the database.
      */
     private void initializeDB() {
-        //noticed this is flagged by checkstyle but did not change this because it's a constant.
-        final String JDBC_DRIVER = "org.h2.Driver";
-        final String DB_URL = "jdbc:h2:./res/HRprodline";
-
-        //  Database credentials
-        final String USER = "";
-        final String PASS = "";
-        Connection conn = null;
-        //Statement stmt = null;
-
         try {
-            // STEP 1: Register JDBC driver
-            Class.forName(JDBC_DRIVER);
+            //noticed this is flagged by checkstyle but did not change this because it's a constant.
+            final String JDBC_DRIVER = "org.h2.Driver";
+            final String DB_URL = "jdbc:h2:./res/HRprodline";
+            Properties prop = new Properties();
+            prop.load(new FileInputStream("res/properties"));
 
-            //STEP 2: Open a connection
-            connection = DriverManager.getConnection(DB_URL, USER, PASS); //empty password
+            //  Database credentials
+            final String USER = "";
+            final String PASS = prop.getProperty("password");
+            Connection conn = null;
 
-            //STEP 3: Execute a query
-            stnt = connection.createStatement();
+            try {
+                // STEP 1: Register JDBC driver
+                Class.forName(JDBC_DRIVER);
 
-        } catch (Exception e) {
-            e.printStackTrace();
+                //STEP 2: Open a connection
+                connection = DriverManager.getConnection(DB_URL, USER, PASS); //empty password
+
+                //STEP 3: Execute a query
+                stnt = connection.createStatement();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception eb) {
+            eb.printStackTrace();
         }
     }
 

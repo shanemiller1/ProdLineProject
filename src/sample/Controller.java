@@ -1,11 +1,16 @@
 package sample;
 
+import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 import java.lang.reflect.Type;
 import java.sql.SQLException;
@@ -16,6 +21,10 @@ import java.util.Date;
 public class Controller {
 
     Statement statement;
+    @FXML
+    protected AnchorPane rootPane;
+    @FXML
+    protected ImageView logoImage;
 
     @FXML
     private TextField txtProductName;
@@ -50,6 +59,9 @@ public class Controller {
     @FXML
     private TableColumn<String, Product> typeCol;
 
+    @FXML
+    private ListView<Product> listChooseProducts;
+
     ArrayList<Product> productLine = new ArrayList<>();
 
     /**
@@ -66,13 +78,14 @@ public class Controller {
         cmbxItemType.getSelectionModel().selectFirst();
         ProductionRecord pr = new ProductionRecord(0, 3, "1", new Date());
         productLogtxtarea.setText(pr.toString());
+        listChooseProducts.getItems().addAll(productLine);
         setupProdLineRecord();
     }
 
     /**
      * method that sets cell factory to necessary information.
      */
-    public void setupProdLineRecord(){
+    public void setupProdLineRecord() {
         ObservableList<Product> productList = FXCollections.observableArrayList();
         idCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("Type"));
@@ -83,6 +96,7 @@ public class Controller {
 
     /**
      * Event handler to add product info when button clicked.
+     *
      * @param event
      */
     @FXML
@@ -103,9 +117,10 @@ public class Controller {
                 + "','"
                 + txtProductName.getText()
                 + "');";
-        Widget addProduct = new Widget(txtProductName.getText(), txtManufacturer.getText(), ItemType.AUDIO);
+        Widget addProduct = new Widget(txtProductName.getText(), txtManufacturer.getText(), cmbxItemType.getValue());
         productLine.add(addProduct);
         tableView.getItems().addAll(addProduct);
+        listChooseProducts.getItems().add(addProduct);
 
     }
 }
