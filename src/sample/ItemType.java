@@ -12,7 +12,6 @@ public enum ItemType {
 
     /**
      * Ithem type setting string to C.
-     *
      */
     ItemType(String code) {
         this.code = code;

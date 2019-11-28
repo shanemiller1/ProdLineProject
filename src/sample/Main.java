@@ -48,8 +48,10 @@ public class Main extends Application {
 
     /**
      * method initializes and connects the program to the database.
+     * @return
      */
-    private void initializeDB() {
+    public static Connection initializeDB() {
+        Connection connection = null;
         try {
             //noticed this is flagged by checkstyle but did not change this because it's a constant.
             final String JDBC_DRIVER = "org.h2.Driver";
@@ -60,7 +62,7 @@ public class Main extends Application {
             //  Database credentials
             final String USER = "";
             final String PASS = prop.getProperty("password");
-            Connection conn = null;
+
 
             try {
                 // STEP 1: Register JDBC driver
@@ -78,6 +80,7 @@ public class Main extends Application {
         } catch (Exception eb) {
             eb.printStackTrace();
         }
+        return connection;
     }
 
     /**

@@ -66,6 +66,10 @@ public abstract class Product implements Item {
     public Product(int id, String name, String manufacturer, ItemType type) {
     }
 
+    // idk where this here
+    public Product(int id, String name, String type, String manufacturer) {
+    }
+
     public String toString() {
         return "Name: " + Name + "\n" + "Manufacturer: " + Manufacturer + "\n" + "Type: " + Type;
     }

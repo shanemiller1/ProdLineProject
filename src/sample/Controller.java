@@ -1,30 +1,20 @@
 package sample;
 
-import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Date;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 
-import java.lang.reflect.Type;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Date;
 
 public class Controller {
-
-    Statement statement;
     @FXML
-    protected AnchorPane rootPane;
-    @FXML
-    protected ImageView logoImage;
+    private TextArea productLogtxtarea;
 
     @FXML
     private TextField txtProductName;
@@ -39,13 +29,10 @@ public class Controller {
     private Button btnAp;
 
     @FXML
-    private TableView<Product> tableView;
+    private Button recordProductionBtn;
 
     @FXML
     private ComboBox<Integer> cmbxChoosequan;
-
-    @FXML
-    private TextArea productLogtxtarea;
 
     @FXML
     private TableColumn<Integer, Product> idCol;
@@ -59,10 +46,19 @@ public class Controller {
     @FXML
     private TableColumn<String, Product> typeCol;
 
-    @FXML
-    private ListView<Product> listChooseProducts;
+    ObservableList<Product> productList = FXCollections.observableArrayList();
 
     ArrayList<Product> productLine = new ArrayList<>();
+
+    ArrayList<ProductionRecord> productionRun = new ArrayList<ProductionRecord>();
+
+    public static Connection conn = null;
+
+    @FXML
+    private TableView<Product> tableView;
+
+    @FXML
+    private ListView<Product> listChooseProducts;
 
     /**
      * first method to run in the controller class.
@@ -70,23 +66,61 @@ public class Controller {
      * @author Shane Miller
      */
     @FXML
-    private void initialize() {
+    private void initialize(){
+        conn = Main.initializeDB();
         cmbxChoosequan.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         cmbxChoosequan.setEditable(true);
         cmbxItemType.getItems().setAll(ItemType.values());
         cmbxChoosequan.getSelectionModel().selectFirst();
         cmbxItemType.getSelectionModel().selectFirst();
-        ProductionRecord pr = new ProductionRecord(0, 3, "1", new Date());
-        productLogtxtarea.setText(pr.toString());
-        listChooseProducts.getItems().addAll(productLine);
         setupProdLineRecord();
+        loadProductList();
+        loadProductionLog();
     }
+
+    /**
+     * method Create Product objects from the Product database table and add them to the productLine
+     */
+    public void loadProductList(){
+        if(conn != null){
+            try {
+                String sql = "SELECT * FROM PRODUCT";
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+
+                while (rs.next()){
+                    int id = rs.getInt("ID");
+                    String name = rs.getString("NAME");
+                    String code = rs.getString("TYPE");
+                    String manufacturer = rs.getString("MANUFACTURER");
+
+                    for(ItemType type : ItemType.values()){
+                        if(type.getCode().equals(code)){
+                            productLine.add(new Widget(name, manufacturer, type));
+                        }
+                    }
+                }
+
+                tableView.getItems().clear();
+                tableView.getItems().addAll(productLine);
+
+
+                listChooseProducts.getItems().clear();
+                listChooseProducts.getItems().addAll(productLine);
+
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        System.out.println(productLine.size());
+    }
+
 
     /**
      * method that sets cell factory to necessary information.
      */
     public void setupProdLineRecord() {
-        ObservableList<Product> productList = FXCollections.observableArrayList();
         idCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("Type"));
         manufacturerCol.setCellValueFactory(new PropertyValueFactory<>("Manufacturer"));
@@ -111,16 +145,59 @@ public class Controller {
                 + "\n");
         ItemType itemType = (ItemType) cmbxItemType.getValue();
         String SQL = "INSERT INTO PRODUCT(NAME, TYPE, MANUFACTURER) VALUES  ('"
+                + txtProductName.getText()
+                + "','"
                 + itemType.getCode()
                 + "','"
                 + txtManufacturer.getText()
-                + "','"
-                + txtProductName.getText()
                 + "');";
+        Main.sqlExecute(SQL);
         Widget addProduct = new Widget(txtProductName.getText(), txtManufacturer.getText(), cmbxItemType.getValue());
         productLine.add(addProduct);
         tableView.getItems().addAll(addProduct);
         listChooseProducts.getItems().add(addProduct);
+    }
 
+
+    @FXML
+    void recordProduction(MouseEvent event) {
+        for(int i = 0; i < Integer.parseInt(String.valueOf(cmbxChoosequan.getValue())); i ++){
+            int itemCount = 0;
+            productionRun.add(
+                    new ProductionRecord(listChooseProducts.getSelectionModel().getSelectedItem(), itemCount));
+            itemCount++;
+        }
+        productLogtxtarea.setText(String.valueOf(productionRun));
+
+
+
+        // Record Production button should:
+        //Get the selected product from the Product Line ListView and the quantity from the comboBox.
+        //Create an ArrayList of ProductionRecord objects named productionRun.
+        //Send the productionRun to an addToProductionDB method. (Tip: use a TimeStamp object for the date)
+        //call loadProductionLog
+        //call showProduction
+        //showProduction should:
+        //
+        //populate the TextArea on the Production Log tab with the information from the productionLog,
+        // replacing the productId with the product name, with one line for each product produced
+
+    }
+
+    public void addToProductionDB() {
+        //Loop through the productionRun, inserting productionRecord
+        // object information into the ProductionRecord database table.
+    }
+
+    public void loadProductionLog() {
+        //create ProductionRecord objects from the records in the ProductionRecord database table.
+        //Populate the productionLog ArrayList
+        //call showProduction
+    }
+
+    public void showProduction() {
+        //populate the TextArea on the Production Log tab with the information from the
+        // productionLog, replacing the productId with the product name, with one line for
+        // each product produced
     }
 }
