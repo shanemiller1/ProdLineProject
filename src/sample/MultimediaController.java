@@ -6,11 +6,11 @@ package sample;
  * @author Shane Miller
  */
 public interface MultimediaController {
-    void play();
+  void play();
 
-    void stop();
+  void stop();
 
-    void previous();
+  void previous();
 
-    void next();
+  void next();
 }

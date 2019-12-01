@@ -6,5 +6,5 @@ package sample;
  * @author Shane Miller
  */
 public enum MonitorType {
-    LCD, LED
+  LCD, LED
 }

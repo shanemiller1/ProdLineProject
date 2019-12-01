@@ -6,13 +6,13 @@ package sample;
  * @author Shane Miller
  */
 public interface Item {
-    int getId();
+  int getId();
 
-    void setName(String name);
+  void setName(String name);
 
-    String getName();
+  String getName();
 
-    void setManufacturer(String manufacturer);
+  void setManufacturer(String manufacturer);
 
-    String getManufacturer();
+  String getManufacturer();
 }
