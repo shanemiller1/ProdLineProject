@@ -1,12 +1,17 @@
 package sample;
 
+/**
+ * Abstract class product implements Item.
+ *
+ * @author Shane Miller
+ */
 public abstract class Product implements Item {
     /**
      * fields in the product class.
      *
      * @author Shane Miller
      */
-    private int Id;
+    private int Id; //I know these naming parameters are causing checkstyle errors
     private ItemType Type;
     private String Manufacturer;
     private String Name;
@@ -14,9 +19,9 @@ public abstract class Product implements Item {
     /**
      * constructor setting this.variables to variables.
      *
-     * @param name
-     * @param manufacturer
-     * @param type
+     * @param name the name.
+     * @param manufacturer  the name of manufacturer.
+     * @param type  the type.
      */
     Product(String name, String manufacturer, ItemType type) {
         this.Name = name;
@@ -28,8 +33,8 @@ public abstract class Product implements Item {
     /**
      * constructor setting this.variables to variables.
      *
-     * @param name
-     * @param manufacturer
+     * @param name  the name.
+     * @param manufacturer  the manufactuer.
      */
     public Product(String name, String manufacturer) {
         this.Name = name;
@@ -43,10 +48,10 @@ public abstract class Product implements Item {
     /**
      * constructor setting this.variables to variables.
      *
-     * @param id
-     * @param type
-     * @param manufacturer
-     * @param name
+     * @param id    int id
+     * @param type  itemtype is type
+     * @param manufacturer string is manufacturer
+     * @param name  string is name
      */
     public Product(int id, ItemType type, String manufacturer, String name) {
         this.Id = id;
@@ -58,10 +63,10 @@ public abstract class Product implements Item {
     /**
      * constructor Product passes id, name , manufacturer and type.
      *
-     * @param id
-     * @param name
-     * @param manufacturer
-     * @param type
+     * @param id    int id
+     * @param name  string name
+     * @param manufacturer  string manufacturer
+     * @param type ItemType type
      */
     public Product(int id, String name, String manufacturer, ItemType type) {
     }
@@ -84,9 +89,9 @@ public abstract class Product implements Item {
     }
 
     /**
-     * method setting manufacturer to manufacturer
+     * method setting manufacturer to manufacturer.
      *
-     * @param manufacturer
+     * @param manufacturer returns manufacturer.
      */
     public void setManufacturer(String manufacturer) {
         Manufacturer = manufacturer;
@@ -151,9 +156,9 @@ class Widget extends Product {
     /**
      * constructor for widget passing super class parameters.
      *
-     * @param name
-     * @param manufacturer
-     * @param type
+     * @param name string name.
+     * @param manufacturer string manufacturer.
+     * @param type ItemType type.
      */
     public Widget(String name, String manufacturer, ItemType type) {
         super(name, manufacturer, type);

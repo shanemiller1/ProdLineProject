@@ -13,10 +13,10 @@ public class MoviePlayer extends Product implements MultimediaController {
     /**
      * constructor passing super class for name and manufacturer.
      *
-     * @param name
-     * @param manufacturer
-     * @param screen
-     * @param monitorType
+     * @param name name.
+     * @param manufacturer name of manufacturer.
+     * @param screen type of screen.
+     * @param monitorType type of monitor.
      */
     MoviePlayer(String name, String manufacturer, Screen screen, MonitorType monitorType) {
         super(name, manufacturer);
@@ -64,7 +64,7 @@ public class MoviePlayer extends Product implements MultimediaController {
     /**
      * setMonitorType sets receives MonitorType variable for MonitorType.
      *
-     * @param monitorType
+     * @param monitorType type of monitor.
      */
     public void setMonitorType(MonitorType monitorType) {
         this.monitorType = monitorType;

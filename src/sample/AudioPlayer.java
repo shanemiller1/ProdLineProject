@@ -1,9 +1,12 @@
 package sample;
 
+
+/**
+ * Class for AudioPlayer.
+ *
+ * @author Shane Miller
+ */
 public class AudioPlayer extends Product implements MultimediaController {
-    /**
-     * @author Shane Miller
-     */
 
     String audioSpecification;
     String mediaType;
@@ -47,10 +50,10 @@ public class AudioPlayer extends Product implements MultimediaController {
     /**
      * constructor passing super class for name and manufacturer.
      *
-     * @param name
-     * @param manufacturer
-     * @param audioSpecification
-     * @param mediaType
+     * @param name name of product.
+     * @param manufacturer  name of manufacturer.
+     * @param audioSpecification    specifies audio.
+     * @param mediaType specifies media type.
      */
     AudioPlayer(String name, String manufacturer, String audioSpecification, String mediaType) {
         super(name, manufacturer);

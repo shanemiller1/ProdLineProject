@@ -1,7 +1,7 @@
 package sample;
 
 /**
- * interface defining variables
+ * interface defining variables.
  *
  * @author Shane Miller
  */

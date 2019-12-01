@@ -5,18 +5,23 @@
 
 package sample;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.Properties;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+/**
+ * Class for Main.
+ *
+ * @author Shane Miller
+ */
 public class Main extends Application {
     private static Statement stnt;
     Connection connection = null;
@@ -37,10 +42,15 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public static void sqlExecute(String SQLStatement) {
+    /**
+     * executes the sql statement.
+     *
+     * @param sqlStatment stores information.
+     */
+    public static void sqlExecute(String sqlStatment) {
         try {
-            stnt.executeUpdate(SQLStatement);
-            System.out.println(SQLStatement);
+            stnt.executeUpdate(sqlStatment);
+            System.out.println(sqlStatment);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -48,12 +58,13 @@ public class Main extends Application {
 
     /**
      * method initializes and connects the program to the database.
+     *
      * @return
      */
     public static Connection initializeDB() {
+        //final field names are capitalized causing checkstyle error.
         Connection connection = null;
         try {
-            //noticed this is flagged by checkstyle but did not change this because it's a constant.
             final String JDBC_DRIVER = "org.h2.Driver";
             final String DB_URL = "jdbc:h2:./res/HRprodline";
             Properties prop = new Properties();

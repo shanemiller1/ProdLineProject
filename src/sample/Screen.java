@@ -48,13 +48,14 @@ public class Screen implements ScreenSpec {
      */
     @Override
     public String toString() {
-        return "\n" + "Resolution: " + resolution + "\n" + "Refresh rate: " + refreshrate + "\n" + "Response time: " + responsetime;
+        return "\n" + "Resolution: " + resolution + "\n" + "Refresh rate: "
+                + refreshrate + "\n" + "Response time: " + responsetime;
     }
 
     /**
      * method setting variables this to variable.
      *
-     * @param resolution
+     * @param resolution the res.
      */
     public void setResolution(String resolution) {
         this.resolution = resolution;
@@ -63,7 +64,7 @@ public class Screen implements ScreenSpec {
     /**
      * method setting variables this to variable.
      *
-     * @param refreshrate
+     * @param refreshrate the hz.
      */
     public void setRefreshrate(int refreshrate) {
         this.refreshrate = refreshrate;
@@ -72,7 +73,7 @@ public class Screen implements ScreenSpec {
     /**
      * method setting variables this to variable.
      *
-     * @param responsetime
+     * @param responsetime the ms.
      */
     public void setResponsetime(int responsetime) {
         this.responsetime = responsetime;
@@ -81,9 +82,9 @@ public class Screen implements ScreenSpec {
     /**
      * constructor passing parameters.
      *
-     * @param resolution
-     * @param refreshrate
-     * @param responsetime
+     * @param resolution res.
+     * @param refreshrate hz.
+     * @param responsetime ms.
      */
     Screen(String resolution, int refreshrate, int responsetime) {
         setResolution(resolution);
