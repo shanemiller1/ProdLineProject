@@ -65,8 +65,8 @@ public class Main extends Application {
     //final field names are capitalized causing checkstyle error.
     Connection connection = null;
     try {
-      final String JDBC_DRIVER = "org.h2.Driver";
-      final String DB_URL = "jdbc:h2:./res/HRprodline";
+      final String jdbcDriver = "org.h2.Driver";
+      final String dbUrl = "jdbc:h2:./res/HRprodline";
       Properties prop = new Properties();
       prop.load(new FileInputStream("res/properties"));
 
@@ -77,10 +77,10 @@ public class Main extends Application {
 
       try {
         // STEP 1: Register JDBC driver
-        Class.forName(JDBC_DRIVER);
+        Class.forName(jdbcDriver);
 
         //STEP 2: Open a connection
-        connection = DriverManager.getConnection(DB_URL, USER, PASS); //empty password
+        connection = DriverManager.getConnection(dbUrl, USER, PASS); //empty password
 
         //STEP 3: Execute a query
         stnt = connection.createStatement();

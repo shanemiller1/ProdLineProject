@@ -32,44 +32,72 @@ public abstract class Employee extends Controller {
     lastLbl.setText(password);
   }
 
-  public String name, username, password, email;
+  public String name;
+  public String username;
+  public String password;
+  public String email;
 
+  /**
+   * checks name.
+   *
+   * @param name name user chooses.
+   * @return
+   */
   public int checkName(String name) {
     char c = ' ';
-    int flag = 0, i;
+    int flag = 0;
+    int i;
     int length = name.length();
     for (i = 0; i < length; i++) {
-      if (name.charAt(i) == c)
+      if (name.charAt(i) == c) {
         flag = 1;
+      }
     }
     return flag; //returns 1 if name contains space
   }
 
-  public int isValidPassword(String password) //to check password is valid or not
-  {
+  /**
+   * checks if valid parameters.
+   *
+   * @param password the password.
+   * @return
+   */
+  public int isValidPassword(String password) {
 
-    int flaglo = 0, flagup = 0, flagspe = 0, flagother = 0, i;
+    int flaglo = 0;
+    int flagup = 0;
+    int flagspe = 0;
+    int flagother = 0;
+    int i;
     int length = password.length();
     for (i = 0; i < length; i++) {
       char ch = password.charAt(i);
-      if (Character.isUpperCase(ch))
+      if (Character.isUpperCase(ch)) {
         flagup = 1;
-      else if (Character.isLowerCase(ch))
+      } else if (Character.isLowerCase(ch)) {
         flaglo = 1;
-      else if (ch == '"' || ch == '!' || ch == '@' || ch == '&' || ch == '$' || ch == '#' || ch == '%' || ch == '^' || ch == '*')
+      } else if (ch == '"' || ch == '!' || ch == '@' || ch == '&' || ch == '$'
+              || ch == '#' || ch == '%' || ch == '^' || ch == '*') {
         flagspe = 1;
-      else
+      } else {
         flagother = 1;
+      }
     }
-    if (flaglo == 1 && flagup == 1 && flagspe == 1 && flagother == 0)
+    if (flaglo == 1 && flagup == 1 && flagspe == 1 && flagother == 0) {
       return 1; //password valid
-    else
+    } else {
       return 0; //password invalid
+    }
   }
 
-  public void setUsername(String name) // method to set username
-  {
-    int i, pos = 0;
+  /**
+   * sets the username.
+   *
+   * @param name the name is a string.
+   */
+  public void setUsername(String name) {
+    int i;
+    int pos = 0;
     char c = ' ';
     String username = "";
     name.toLowerCase();
@@ -82,23 +110,29 @@ public abstract class Employee extends Controller {
       }
     }
     username = username + name.charAt(0);
-    for (i = pos; i < length; i++)
+    for (i = pos; i < length; i++) {
       username = username + name.charAt(i);
-    this.username = username.toLowerCase();
+      this.username = username.toLowerCase();
+    }
   }
 
-  public void setEmail(String name) //email method
-  {
+  /**
+   * sets the email.
+   *
+   * @param name name is string and used same here as previous methods.
+   */
+  public void setEmail(String name) {
     char c = ' ';
     int i;
     String email = "";
     name.toLowerCase();
     int length = name.length();
     for (i = 0; i < length; i++) {
-      if (name.charAt(i) == c)
+      if (name.charAt(i) == c) {
         email = email + ".";
-      else
+      } else {
         email = email + name.charAt(i);
+      }
     }
     email = email.toLowerCase() + "@oracleacademy.Test";
     this.email = email;
@@ -106,24 +140,24 @@ public abstract class Employee extends Controller {
 
   //overload toString()
   public String toString() {
-    return "\nEmployee Details\nName : " + this.name + "\nUsername : " + this.username + "\nEmail : " + this.email + "\nInitial Password : " + this.password;
+    return "\nEmployee Details\nName : " + this.name + "\nUsername : "
+            + this.username + "\nEmail : " + this.email + "\nInitial Password : " + this.password;
   }
 
-  Employee(String name, String password) //constructor
-  {
+  Employee(String name, String password) {
     this.name = name;
-    if (checkName(name) == 1) //if there is a valid username
-    {
+    if (checkName(name) == 1) {
       setUsername(name);
       setEmail(name);
     } else {
       this.username = "default";
       this.email = "user@oracleacademy.Test";
     }
-    if (isValidPassword(password) == 1) //if the password is valid
+    if (isValidPassword(password) == 1) {
       this.password = password;
-    else
+    } else {
       this.password = "pw";
+    }
 
   }
 }
