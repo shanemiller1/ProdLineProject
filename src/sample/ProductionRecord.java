@@ -1,7 +1,6 @@
 package sample;
 
 import java.util.Date;
-import java.util.Random;
 
 /**
  * Class for production record.
@@ -9,7 +8,7 @@ import java.util.Random;
  * @author Shane Miller
  */
 public class ProductionRecord {
-  private int ProductionNum;
+  private int productionNum;
   private int productID;
   private String serialNumber;
   private Date dateProduced;
@@ -17,10 +16,10 @@ public class ProductionRecord {
   /**
    * method defining values for fields.
    *
-   * @param productID
+   * @param productID id for product.
    */
   public ProductionRecord(int productID) {
-    this.ProductionNum = ProductionNum;
+    this.productionNum = productionNum;
     serialNumber = "0";
     dateProduced = new Date();
     this.productID = productID;
@@ -29,8 +28,8 @@ public class ProductionRecord {
   /**
    * constructor calling variables to print a log for products.
    *
-   * @param productProduced
-   * @param itemCount
+   * @param productProduced products produced.
+   * @param itemCount the item count.
    */
   public ProductionRecord(Product productProduced, int itemCount) {
     setSerialNum(productProduced.getManufacturer().substring(0, 3)
@@ -45,7 +44,7 @@ public class ProductionRecord {
    */
   @Override
   public String toString() {
-    return "\nProd. Num: " + ProductionNum + " Product ID: " + productID + " Serial Num: "
+    return "\nProd. Num: " + productionNum + " Product ID: " + productID + " Serial Num: "
             + serialNumber + " Date: " + dateProduced;
   }
 
@@ -111,7 +110,7 @@ public class ProductionRecord {
   public int getProductionNum() {
     //Random rand = new Random();
     //int ProductionNum = rand.nextInt(100);
-    return ProductionNum;
+    return productionNum;
   }
 
   /**
@@ -120,19 +119,20 @@ public class ProductionRecord {
    * @return
    */
   public void setProductionNum(int productionNum) {
-    ProductionNum = productionNum;
+    this.productionNum = productionNum;
   }
 
   /**
    * constructor setting variables this to variables.
    *
-   * @param ProductionNum
-   * @param productID
-   * @param serialNumber
-   * @param dateProduced
+   * @param productionnum the production number.
+   * @param productID id for products.
+   * @param serialNumber serial number for product.
+   * @param dateProduced date the product is produced.
    */
-  public ProductionRecord(int ProductionNum, int productID, String serialNumber, Date dateProduced) {
-    this.ProductionNum = ProductionNum;
+  public ProductionRecord(int productionnum, int productID,
+                          String serialNumber, Date dateProduced) {
+    this.productionNum = productionnum;
     this.productID = productID;
     this.serialNumber = serialNumber;
     this.dateProduced = dateProduced;

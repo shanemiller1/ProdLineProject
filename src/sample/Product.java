@@ -11,10 +11,10 @@ public abstract class Product implements Item {
    *
    * @author Shane Miller
    */
-  private int Id; //I know these naming parameters are causing checkstyle errors
-  private ItemType Type;
-  private String Manufacturer;
-  private String Name;
+  private int id; //I know these naming parameters are causing checkstyle errors
+  private ItemType type;
+  private String manufacturer;
+  private String name;
 
   /**
    * constructor setting this.variables to variables.
@@ -24,9 +24,9 @@ public abstract class Product implements Item {
    * @param type         the type.
    */
   Product(String name, String manufacturer, ItemType type) {
-    this.Name = name;
-    this.Manufacturer = manufacturer;
-    this.Type = type;
+    this.name = name;
+    this.manufacturer = manufacturer;
+    this.type = type;
 
   }
 
@@ -37,8 +37,8 @@ public abstract class Product implements Item {
    * @param manufacturer the manufactuer.
    */
   public Product(String name, String manufacturer) {
-    this.Name = name;
-    this.Manufacturer = manufacturer;
+    this.name = name;
+    this.manufacturer = manufacturer;
   }
 
   public Product() {
@@ -54,10 +54,10 @@ public abstract class Product implements Item {
    * @param name         string is name
    */
   public Product(int id, ItemType type, String manufacturer, String name) {
-    this.Id = id;
-    this.Type = type;
-    this.Manufacturer = manufacturer;
-    this.Name = name;
+    this.id = id;
+    this.type = type;
+    this.manufacturer = manufacturer;
+    this.name = name;
   }
 
   /**
@@ -76,7 +76,7 @@ public abstract class Product implements Item {
   }
 
   public String toString() {
-    return "Name: " + Name + "\n" + "Manufacturer: " + Manufacturer + "\n" + "Type: " + Type;
+    return "Name: " + name + "\n" + "Manufacturer: " + manufacturer + "\n" + "Type: " + type;
   }
 
   /**
@@ -85,7 +85,7 @@ public abstract class Product implements Item {
    * @return
    */
   public String getManufacturer() {
-    return Manufacturer;
+    return manufacturer;
   }
 
   /**
@@ -94,7 +94,7 @@ public abstract class Product implements Item {
    * @param manufacturer returns manufacturer.
    */
   public void setManufacturer(String manufacturer) {
-    Manufacturer = manufacturer;
+    this.manufacturer = manufacturer;
   }
 
   /**
@@ -103,7 +103,7 @@ public abstract class Product implements Item {
    * @return
    */
   public String getName() {
-    return Name;
+    return name;
   }
 
   /**
@@ -112,7 +112,7 @@ public abstract class Product implements Item {
    * @return
    */
   public void setName(String name) {
-    Name = name;
+    this.name = name;
   }
 
   /**
@@ -121,7 +121,7 @@ public abstract class Product implements Item {
    * @return
    */
   public int getId() {
-    return Id;
+    return id;
   }
 
   /**
@@ -130,7 +130,7 @@ public abstract class Product implements Item {
    * @return
    */
   public void setId(int id) {
-    Id = id;
+    this.id = id;
   }
 
   /**
@@ -139,7 +139,7 @@ public abstract class Product implements Item {
    * @return
    */
   public ItemType getType() {
-    return Type;
+    return type;
   }
 
   /**
@@ -148,19 +148,6 @@ public abstract class Product implements Item {
    * @return
    */
   public void setType(ItemType type) {
-    Type = type;
-  }
-}
-
-class Widget extends Product {
-  /**
-   * constructor for widget passing super class parameters.
-   *
-   * @param name         string name.
-   * @param manufacturer string manufacturer.
-   * @param type         ItemType type.
-   */
-  public Widget(String name, String manufacturer, ItemType type) {
-    super(name, manufacturer, type);
+    this.type = type;
   }
 }

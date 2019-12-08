@@ -71,8 +71,8 @@ public class Main extends Application {
       prop.load(new FileInputStream("res/properties"));
 
       //  Database credentials
-      final String USER = "";
-      final String PASS = prop.getProperty("password");
+      final String user = "";
+      final String pass = prop.getProperty("password");
 
 
       try {
@@ -80,7 +80,7 @@ public class Main extends Application {
         Class.forName(jdbcDriver);
 
         //STEP 2: Open a connection
-        connection = DriverManager.getConnection(dbUrl, USER, PASS); //empty password
+        connection = DriverManager.getConnection(dbUrl, user, pass); //empty password
 
         //STEP 3: Execute a query
         stnt = connection.createStatement();
@@ -97,7 +97,7 @@ public class Main extends Application {
   /**
    * main method in main containing code for issues..
    *
-   * @param args
+   * @param args pass a variable number of arguments to a function.
    */
   public static void main(String[] args) {
     launch(args);
