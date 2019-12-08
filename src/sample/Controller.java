@@ -174,6 +174,7 @@ public class Controller {
       itemCount++;
     }
     productLogtxtarea.setText(String.valueOf(productionRun));
+    addToProductionDB();
     //I know this is printing wrong I am working on it.
 
     // Record Production button should:
@@ -195,6 +196,8 @@ public class Controller {
   }
 
   public void addToProductionDB() {
+
+
     //Loop through the productionRun, inserting productionRecord
     // object information into the ProductionRecord database table.
   }

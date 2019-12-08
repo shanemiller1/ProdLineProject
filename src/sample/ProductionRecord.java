@@ -1,6 +1,7 @@
 package sample;
 
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Class for production record.
@@ -19,7 +20,7 @@ public class ProductionRecord {
    * @param productID
    */
   public ProductionRecord(int productID) {
-    ProductionNum = 0;
+    this.ProductionNum = ProductionNum;
     serialNumber = "0";
     dateProduced = new Date();
     this.productID = productID;
@@ -43,7 +44,7 @@ public class ProductionRecord {
    */
   @Override
   public String toString() {
-    return "Prod. Num: " + ProductionNum + " Product ID: " + productID + " Serial Num: "
+    return "\nProd. Num: " + ProductionNum + " Product ID: " + productID + " Serial Num: "
             + serialNumber + " Date: " + dateProduced;
   }
 
@@ -107,6 +108,8 @@ public class ProductionRecord {
    * @return
    */
   public int getProductionNum() {
+    //Random rand = new Random();
+    //int ProductionNum = rand.nextInt(100);
     return ProductionNum;
   }
 
