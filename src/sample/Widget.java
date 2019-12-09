@@ -4,6 +4,7 @@ package sample;
  * class for widget extending product.
  * @author Shane Miller
  */
+
 class Widget extends Product {
   /**
    * constructor for widget passing super class parameters.

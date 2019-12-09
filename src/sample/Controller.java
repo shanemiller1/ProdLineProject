@@ -3,6 +3,10 @@ package sample;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,6 +24,8 @@ import javafx.scene.control.TextField;
 
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+
+import javax.naming.Name;
 
 
 /**
@@ -175,7 +181,7 @@ public class Controller {
 
 
   @FXML
-  void recordProduction(MouseEvent event) {
+  void recordProduction(MouseEvent event) throws ParseException {
     for (int i = 0; i < Integer.parseInt(String.valueOf(cmbxChoosequan.getValue())); i++) {
       int itemCount = 0;
       productionRun.add(
@@ -205,11 +211,25 @@ public class Controller {
 
   }
 
-  public void addToProductionDB() {
-
-
-    //Loop through the productionRun, inserting productionRecord
-    // object information into the ProductionRecord database table.
+  public void addToProductionDB() throws ParseException {
+    int productionnum = 0;
+    int productID = 0;
+    String serialNumber = "";
+    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    Date dateProduced = dateFormat.parse("08/12/2019");
+    ProductionRecord prod = new ProductionRecord(productionnum, productID, serialNumber, dateProduced);
+    String sql = "INSERT INTO PRODUCTIONRECORD(PRODUCTION_NUM, PRODUCT_ID, SERIAL_NUM, DATE_PRODUCED, QUANITY) VALUES  ('"
+            + productionnum
+            + "','"
+            + productID
+            + "','"
+            + serialNumber
+            + "','"
+            + dateProduced
+            + "','"
+            + cmbxChoosequan.getValue()
+            + "');";
+    Main.sqlExecute(sql);
   }
 
   public void loadProductionLog() {

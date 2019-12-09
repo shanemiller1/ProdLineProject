@@ -7,7 +7,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public abstract class Employee extends Controller {
+/**
+ * class for employee.
+ * @author Shane Miller
+ */
+
+public class Employee {
 
   @FXML
   private Label searcgLbl;
@@ -27,6 +32,9 @@ public abstract class Employee extends Controller {
   @FXML
   private TextField setLast;
 
+  /**
+   * first method to start.
+   */
   private void initialize() {
     firstLbl.setText(name);
     lastLbl.setText(password);
@@ -138,12 +146,20 @@ public abstract class Employee extends Controller {
     this.email = email;
   }
 
-  //overload toString()
+  /***
+   * prints employee details.
+   * @return
+   */
   public String toString() {
     return "\nEmployee Details\nName : " + this.name + "\nUsername : "
             + this.username + "\nEmail : " + this.email + "\nInitial Password : " + this.password;
   }
 
+  /**
+   * contructor for employee.
+   * @param name the name.
+   * @param password the password.
+   */
   Employee(String name, String password) {
     this.name = name;
     if (checkName(name) == 1) {
