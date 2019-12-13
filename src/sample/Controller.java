@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -191,32 +192,14 @@ public class Controller {
     }
     productLogtxtarea.setText(String.valueOf(productionRun));
     addToProductionDB();
-    //I know this is printing wrong I am working on it.
-
-    // Record Production button should:
-    //Get the selected product from the Product Line ListView
-    // and the quantity from the comboBox.
-    //Create an ArrayList of ProductionRecord objects named
-    // productionRun.
-    //Send the productionRun to an addToProductionDB method.
-    // (Tip: use a TimeStamp object for the date)
-    //call loadProductionLog
-    //call showProduction
-    //showProduction should:
-    //
-    //populate the TextArea on the Production Log tab with the
-    // information from the productionLog,
-    // replacing the productId with the product name, with one
-    // line for each product produced
-
   }
 
   public void addToProductionDB() throws ParseException {
-    int productionnum = 0;
+    Random rand = new Random();
+    int productionnum = rand.nextInt(1000);
     int productID = 0;
-    String serialNumber = "";
-    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    Date dateProduced = dateFormat.parse("08/12/2019");
+    String serialNumber = productionRun.toString().substring(29,50);
+    String dateProduced = (String.valueOf(new Date()));
     ProductionRecord prod = new ProductionRecord(productionnum, productID, serialNumber, dateProduced);
     String sql = "INSERT INTO PRODUCTIONRECORD(PRODUCTION_NUM, PRODUCT_ID, SERIAL_NUM, DATE_PRODUCED, QUANITY) VALUES  ('"
             + productionnum

@@ -8,6 +8,7 @@ import java.util.Date;
  * @author Shane Miller
  */
 public class ProductionRecord {
+
   private int productionNum;
   private int productID;
   private String serialNumber;
@@ -35,6 +36,9 @@ public class ProductionRecord {
     setSerialNum(productProduced.getManufacturer().substring(0, 3)
         + productProduced.getType().getCode() + "0000" + itemCount);
     setProdDate(new Date());
+  }
+
+  public ProductionRecord(int productionnum, int productID, String serialNumber, String dateProduced) {
   }
 
   /**
