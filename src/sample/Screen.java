@@ -14,7 +14,7 @@ public class Screen implements ScreenSpec {
   /**
    * getResolution method receives Resolution variable for Resolution.
    *
-   * @return
+   * @return this the return.
    */
   @Override
   public String getResolution() {
@@ -24,7 +24,7 @@ public class Screen implements ScreenSpec {
   /**
    * getRefreshRate method receives RefreshRate variable for RefreshRate.
    *
-   * @return
+   * @return this the return.
    */
   @Override
   public int getRefreshRate() {
@@ -34,7 +34,7 @@ public class Screen implements ScreenSpec {
   /**
    * getResponseTime method receives ResponseTime variable for ResponseTime.
    *
-   * @return
+   * @return this the return.
    */
   @Override
   public int getResponseTime() {
@@ -44,7 +44,7 @@ public class Screen implements ScreenSpec {
   /**
    * tostring returning data to print.
    *
-   * @return
+   * @return this the return.
    */
   @Override
   public String toString() {

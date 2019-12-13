@@ -29,29 +29,29 @@ public class ProductionRecord {
    * constructor calling variables to print a log for products.
    *
    * @param productProduced products produced.
-   * @param itemCount the item count.
+   * @param itemCount       the item count.
    */
   public ProductionRecord(Product productProduced, int itemCount) {
     setSerialNum(productProduced.getManufacturer().substring(0, 3)
-            + productProduced.getType().getCode() + "0000" + itemCount);
+        + productProduced.getType().getCode() + "0000" + itemCount);
     setProdDate(new Date());
   }
 
   /**
    * toString returns variables to print to logs.
    *
-   * @return
+   * @return returns string value.
    */
   @Override
   public String toString() {
     return "\nProd. Num: " + productionNum + " Product ID: " + productID + " Serial Num: "
-            + serialNumber + " Date: " + dateProduced;
+        + serialNumber + " Date: " + dateProduced;
   }
 
   /**
    * getType method receives ProductID variable for ProductID.
    *
-   * @return
+   * @return returns product id.
    */
   public int getProductID() {
     return productID;
@@ -60,7 +60,7 @@ public class ProductionRecord {
   /**
    * setProductID method sets ProductID variable for ProductID.
    *
-   * @return
+   * @param productID the product id.
    */
   public void setProductID(int productID) {
     this.productID = productID;
@@ -69,7 +69,7 @@ public class ProductionRecord {
   /**
    * getSerialNum method receives SerialNum variable for SerialNum.
    *
-   * @return
+   * @return this the return.
    */
   public String getSerialNum() {
     return serialNumber;
@@ -78,7 +78,7 @@ public class ProductionRecord {
   /**
    * setSerialNum method sets serialNum variable for serialNum.
    *
-   * @return
+   * @param serialNumber this the serial number.
    */
   public void setSerialNum(String serialNumber) {
     this.serialNumber = serialNumber;
@@ -87,7 +87,7 @@ public class ProductionRecord {
   /**
    * getProdDate method receives prodDate variable for prodDate.
    *
-   * @return
+   * @return this the return.
    */
   public Date getProdDate() {
     return dateProduced;
@@ -96,7 +96,7 @@ public class ProductionRecord {
   /**
    * setProdDate method sets prodDate variable for prodDate.
    *
-   * @return
+   * @param dateProduced date produced.
    */
   public void setProdDate(Date dateProduced) {
     this.dateProduced = dateProduced;
@@ -105,7 +105,7 @@ public class ProductionRecord {
   /**
    * getProductionNum method receives ProductionNum variable for ProductionNum.
    *
-   * @return
+   * @return this the return.
    */
   public int getProductionNum() {
     //Random rand = new Random();
@@ -116,7 +116,7 @@ public class ProductionRecord {
   /**
    * setProductionNum method sets ProductionNum variable for ProductionNum.
    *
-   * @return
+   * @param productionNum number of production number.
    */
   public void setProductionNum(int productionNum) {
     this.productionNum = productionNum;
@@ -126,9 +126,9 @@ public class ProductionRecord {
    * constructor setting variables this to variables.
    *
    * @param productionnum the production number.
-   * @param productID id for products.
-   * @param serialNumber serial number for product.
-   * @param dateProduced date the product is produced.
+   * @param productID     id for products.
+   * @param serialNumber  serial number for product.
+   * @param dateProduced  date the product is produced.
    */
   public ProductionRecord(int productionnum, int productID,
                           String serialNumber, Date dateProduced) {

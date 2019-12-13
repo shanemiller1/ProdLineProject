@@ -82,7 +82,7 @@ public abstract class Product implements Item {
   /**
    * getManufacturer method receives manufacturer variable for manufacturer.
    *
-   * @return
+   * @return the return.
    */
   public String getManufacturer() {
     return manufacturer;
@@ -100,7 +100,7 @@ public abstract class Product implements Item {
   /**
    * getName method receives name variable for name.
    *
-   * @return
+   * @return returns the name.
    */
   public String getName() {
     return name;
@@ -109,7 +109,7 @@ public abstract class Product implements Item {
   /**
    * setName method sets name variable for name.
    *
-   * @return
+   * @param name the name.
    */
   public void setName(String name) {
     this.name = name;
@@ -118,7 +118,7 @@ public abstract class Product implements Item {
   /**
    * getId method receives Id type variable for Id.
    *
-   * @return
+   * @return returns id.
    */
   public int getId() {
     return id;
@@ -127,7 +127,7 @@ public abstract class Product implements Item {
   /**
    * setId method sets Id variable for Id.
    *
-   * @return
+   * @param id the id.
    */
   public void setId(int id) {
     this.id = id;
@@ -136,7 +136,7 @@ public abstract class Product implements Item {
   /**
    * getType method receives type variable for type.
    *
-   * @return
+   * @return returns type.
    */
   public ItemType getType() {
     return type;
@@ -145,7 +145,7 @@ public abstract class Product implements Item {
   /**
    * setType method sets type variable for type.
    *
-   * @return
+   * @param type the type.
    */
   public void setType(ItemType type) {
     this.type = type;

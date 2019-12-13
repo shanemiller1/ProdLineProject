@@ -27,7 +27,7 @@ public class MoviePlayer extends Product implements MultimediaController {
   /**
    * to string returning super class to print information.
    *
-   * @return
+   * @return ret the super to string.
    */
   @Override
   public String toString() {
@@ -37,7 +37,7 @@ public class MoviePlayer extends Product implements MultimediaController {
   /**
    * setScreen method receives Screen variable for Screen.
    *
-   * @return
+   * @return ret the screen.
    */
   public Screen getScreen() {
     return screen;
@@ -46,7 +46,7 @@ public class MoviePlayer extends Product implements MultimediaController {
   /**
    * setScreen method sets Screen variable for Screen.
    *
-   * @return
+   * @param screen screen ?.
    */
   public void setScreen(Screen screen) {
     this.screen = screen;
@@ -55,7 +55,7 @@ public class MoviePlayer extends Product implements MultimediaController {
   /**
    * getMonitorType method receives MonitorType variable for MonitorType.
    *
-   * @return
+   * @return returns monitor type.
    */
   public MonitorType getMonitorType() {
     return monitorType;

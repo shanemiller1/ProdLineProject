@@ -59,7 +59,7 @@ public class Main extends Application {
   /**
    * method initializes and connects the program to the database.
    *
-   * @return
+   * @return returns connection.
    */
   public static Connection initializeDB() {
     //final field names are capitalized causing checkstyle error.

@@ -12,6 +12,7 @@ public enum ItemType {
 
   /**
    * Ithem type setting string to C.
+   * @param code code stored.
    */
   ItemType(String code) {
     this.code = code;
@@ -20,7 +21,7 @@ public enum ItemType {
   /**
    * getType method receives type variable for type.
    *
-   * @return
+   * @return ret the code.
    */
   public String getType() {
     return code;
@@ -29,7 +30,7 @@ public enum ItemType {
   /**
    * getcode method receives code variable for code.
    *
-   * @return
+   * @return ret the code.
    */
   public String getCode() {
     return code;
@@ -38,7 +39,7 @@ public enum ItemType {
   /**
    * setcode method sets code variable for code.
    *
-   * @return
+   * @param code code is code.
    */
   public void setCode(String code) {
     this.code = code;

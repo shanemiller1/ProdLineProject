@@ -14,7 +14,7 @@ public class AudioPlayer extends Product implements MultimediaController {
   /**
    * getAudioSpecification method receives AudioSpecification variable for AudioSpecification.
    *
-   * @return
+   * @return this the return.
    */
   public String getAudioSpecification() {
     return audioSpecification;
@@ -23,7 +23,7 @@ public class AudioPlayer extends Product implements MultimediaController {
   /**
    * setAudioSpecification method sets AudioSpecification variable for AudioSpecification.
    *
-   * @return
+   * @param audioSpecification spec of audio.
    */
   public void setAudioSpecification(String audioSpecification) {
     this.audioSpecification = audioSpecification;
@@ -32,7 +32,7 @@ public class AudioPlayer extends Product implements MultimediaController {
   /**
    * getMediaType method receives MediaType variable for MediaType.
    *
-   * @return
+   * @return this the return.
    */
   public String getMediaType() {
     return this.mediaType;
@@ -41,7 +41,7 @@ public class AudioPlayer extends Product implements MultimediaController {
   /**
    * setMediaType method sets MediaType variable for MediaType.
    *
-   * @return
+   * @param mediaType type of media.
    */
   public void setMediaType(String mediaType) {
     this.mediaType = mediaType;
@@ -65,7 +65,7 @@ public class AudioPlayer extends Product implements MultimediaController {
   /**
    * toString returns from super class.
    *
-   * @return
+   * @return this the return.
    */
   @Override
   public String toString() {

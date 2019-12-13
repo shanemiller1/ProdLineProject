@@ -49,7 +49,7 @@ public class Employee {
    * checks name.
    *
    * @param name name user chooses.
-   * @return
+   * @return gets the flag.
    */
   public int checkName(String name) {
     char c = ' ';
@@ -68,7 +68,7 @@ public class Employee {
    * checks if valid parameters.
    *
    * @param password the password.
-   * @return
+   * @return rets zero.
    */
   public int isValidPassword(String password) {
 
@@ -148,7 +148,7 @@ public class Employee {
 
   /***
    * prints employee details.
-   * @return
+   * @return rets strings.
    */
   public String toString() {
     return "\nEmployee Details\nName : " + this.name + "\nUsername : "
