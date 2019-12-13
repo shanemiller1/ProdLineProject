@@ -1,21 +1,47 @@
 package sample;
 
+/**
+ * enum setting variables for audio, visual, audio & visual mobile.
+ *
+ * @author Shane Miller
+ */
 public enum ItemType {
   AUDIO("AU"), VISUAL("VI"), AUDIO_MOBILE("AM"), VISUAL_MOBILE("VM");
 
-  private String c;
-  ItemType(String c){
-    this.c = c;
-  }
-  public String getType(){
-   return c;
+  private String code;
+
+  /**
+   * Ithem type setting string to C.
+   * @param code code stored.
+   */
+  ItemType(String code) {
+    this.code = code;
   }
 
-  public String getC() {
-    return c;
+  /**
+   * getType method receives type variable for type.
+   *
+   * @return ret the code.
+   */
+  public String getType() {
+    return code;
   }
 
-  public void setC(String c) {
-    this.c = c;
+  /**
+   * getcode method receives code variable for code.
+   *
+   * @return ret the code.
+   */
+  public String getCode() {
+    return code;
+  }
+
+  /**
+   * setcode method sets code variable for code.
+   *
+   * @param code code is code.
+   */
+  public void setCode(String code) {
+    this.code = code;
   }
 }

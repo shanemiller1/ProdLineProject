@@ -1,4 +1,7 @@
 .root {
-    -fx-background-image: url("fgcu_neon_50.png");
+    -fx-background-image: url("..IdeaProjects/ProdLineProject/src/sample/fgcu_neon_50.png");
 }
 
+.root {
+    -fx-border-color: magenta;
+}
