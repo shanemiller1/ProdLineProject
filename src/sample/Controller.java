@@ -3,30 +3,21 @@ package sample;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-
-import javax.naming.Name;
 
 
 /**
@@ -47,6 +38,12 @@ public class Controller {
 
   @FXML
   private ChoiceBox<ItemType> cmbxItemType;
+
+  @FXML
+  private Label firstLbl;
+
+  @FXML
+  private Label lastLbl;
 
   @FXML
   private Button btnAp;
@@ -90,13 +87,12 @@ public class Controller {
   private void initialize() {
     conn = Main.initializeDB();
     cmbxChoosequan.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-    cmbxChoosequan.setEditable(true);
     cmbxItemType.getItems().setAll(ItemType.values());
     cmbxChoosequan.getSelectionModel().selectFirst();
     cmbxItemType.getSelectionModel().selectFirst();
     setupProdLineRecord();
     loadProductList();
-    loadProductionLog();
+    productLogtxtarea.setEditable(false);
   }
 
   /**
@@ -137,7 +133,6 @@ public class Controller {
     System.out.println(productLine.size());
   }
 
-
   /**
    * method that sets cell factory to necessary information.
    */
@@ -159,74 +154,69 @@ public class Controller {
     String name = txtProductName.textProperty().get();
     String manufacturer = txtManufacturer.textProperty().get();
     System.out.println("ProductName is:"
-            + name
-            + "\n"
-            + "manufacturer is:"
-            + manufacturer
-            + "\n");
+        + name
+        + "\n"
+        + "manufacturer is:"
+        + manufacturer
+        + "\n");
     ItemType itemType = (ItemType) cmbxItemType.getValue();
     String sql = "INSERT INTO PRODUCT(NAME, TYPE, MANUFACTURER) VALUES  ('"
-            + txtProductName.getText()
-            + "','"
-            + itemType.getCode()
-            + "','"
-            + txtManufacturer.getText()
-            + "');";
+        + txtProductName.getText()
+        + "','"
+        + itemType.getCode()
+        + "','"
+        + txtManufacturer.getText()
+        + "');";
     Main.sqlExecute(sql);
     Widget addProduct = new Widget(
-            txtProductName.getText(), txtManufacturer.getText(), cmbxItemType.getValue());
+        txtProductName.getText(), txtManufacturer.getText(), cmbxItemType.getValue());
     productLine.add(addProduct);
     tableView.getItems().addAll(addProduct);
     listChooseProducts.getItems().add(addProduct);
   }
 
-
+  /**
+   * very creative method :).
+   * @param event when clicked.
+   * @throws ParseException throws exception.
+   */
   @FXML
   void recordProduction(MouseEvent event) throws ParseException {
     for (int i = 0; i < Integer.parseInt(String.valueOf(cmbxChoosequan.getValue())); i++) {
       int itemCount = 0;
       productionRun.add(
-              new ProductionRecord(
-                      listChooseProducts.getSelectionModel().getSelectedItem(), itemCount));
+          new ProductionRecord(
+              listChooseProducts.getSelectionModel().getSelectedItem(), itemCount));
       itemCount++;
     }
-    productLogtxtarea.setText(String.valueOf(productionRun));
+    productLogtxtarea.setText("Product ID: "
+        + productLine.get(listChooseProducts.getSelectionModel().getSelectedIndex()).getName()
+        + " " + String.valueOf(productionRun).substring(29,86));
     addToProductionDB();
   }
 
+  /**
+   * very complex method :).
+   * @throws ParseException the exception.
+   */
   public void addToProductionDB() throws ParseException {
     Random rand = new Random();
     int productionnum = rand.nextInt(1000);
-    int productID = 0;
+    String productID = productLine.get(listChooseProducts.getSelectionModel().getSelectedIndex()).getName();
     String serialNumber = productionRun.toString().substring(29,50);
     String dateProduced = (String.valueOf(new Date()));
     ProductionRecord prod = new ProductionRecord(productionnum, productID, serialNumber, dateProduced);
     String sql = "INSERT INTO PRODUCTIONRECORD(PRODUCTION_NUM, PRODUCT_ID, SERIAL_NUM, DATE_PRODUCED, QUANITY) VALUES  ('"
-            + productionnum
-            + "','"
-            + productID
-            + "','"
-            + serialNumber
-            + "','"
-            + dateProduced
-            + "','"
-            + cmbxChoosequan.getValue()
-            + "');";
+        + productionnum
+        + "','"
+        + productID
+        + "','"
+        + serialNumber
+        + "','"
+        + dateProduced
+        + "','"
+        + cmbxChoosequan.getValue()
+        + "');";
     Main.sqlExecute(sql);
-  }
-
-  public void loadProductionLog() {
-    //create ProductionRecord objects from
-    // the records in the ProductionRecord database table.
-    //Populate the productionLog ArrayList
-    //call showProduction
-  }
-
-  public void showProduction() {
-    //populate the TextArea on the Production Log tab with
-    // the information from the
-    // productionLog, replacing the productId with the product
-    // name, with one line for
-    // each product produced
   }
 }

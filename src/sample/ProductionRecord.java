@@ -38,7 +38,7 @@ public class ProductionRecord {
     setProdDate(new Date());
   }
 
-  public ProductionRecord(int productionnum, int productID, String serialNumber, String dateProduced) {
+  public ProductionRecord(int productionnum, String productID, String serialNumber, String dateProduced) {
   }
 
   /**
