@@ -146,8 +146,9 @@ public class Employee {
     this.email = email;
   }
 
-  /***
+  /**
    * prints employee details.
+   *
    * @return rets strings.
    */
   public String toString() {

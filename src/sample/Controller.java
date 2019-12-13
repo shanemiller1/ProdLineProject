@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+
 import javafx.scene.control.*;
 
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -177,6 +178,7 @@ public class Controller {
 
   /**
    * very creative method :).
+   *
    * @param event when clicked.
    * @throws ParseException throws exception.
    */
@@ -191,22 +193,26 @@ public class Controller {
     }
     productLogtxtarea.setText("Product ID: "
         + productLine.get(listChooseProducts.getSelectionModel().getSelectedIndex()).getName()
-        + " " + String.valueOf(productionRun).substring(29,86));
+        + " " + String.valueOf(productionRun).substring(29, 86));
     addToProductionDB();
   }
 
   /**
    * very complex method :).
+   *
    * @throws ParseException the exception.
    */
   public void addToProductionDB() throws ParseException {
     Random rand = new Random();
     int productionnum = rand.nextInt(1000);
-    String productID = productLine.get(listChooseProducts.getSelectionModel().getSelectedIndex()).getName();
-    String serialNumber = productionRun.toString().substring(29,50);
+    String productID = productLine.get(
+        listChooseProducts.getSelectionModel().getSelectedIndex()).getName();
+    String serialNumber = productionRun.toString().substring(29, 50);
     String dateProduced = (String.valueOf(new Date()));
-    ProductionRecord prod = new ProductionRecord(productionnum, productID, serialNumber, dateProduced);
-    String sql = "INSERT INTO PRODUCTIONRECORD(PRODUCTION_NUM, PRODUCT_ID, SERIAL_NUM, DATE_PRODUCED, QUANITY) VALUES  ('"
+    ProductionRecord prod = new ProductionRecord(
+        productionnum, productID, serialNumber, dateProduced);
+    String sql = "INSERT INTO PRODUCTIONRECORD(PRODUCTION_NUM, PRODUCT_ID,"
+        + " SERIAL_NUM, DATE_PRODUCED, QUANITY) VALUES  ('"
         + productionnum
         + "','"
         + productID

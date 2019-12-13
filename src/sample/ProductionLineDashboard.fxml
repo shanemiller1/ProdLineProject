@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@prodLineStyle.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@prodLineStyle.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <tabs>
         <Tab text="Product Line">
             <content>
@@ -87,7 +87,7 @@
                   <Label fx:id="searcgLbl" layoutX="101.0" layoutY="65.0" text="search employee:" textFill="WHITE" />
                   <Label layoutX="139.0" layoutY="101.0" text="First Name:" textFill="WHITE" />
                   <Label layoutX="140.0" layoutY="143.0" text="Last Name:" textFill="WHITE" />
-                  <TextField fx:id="searchField" layoutX="216.0" layoutY="60.0" />
+                  <TextField fx:id="searchField" layoutX="216.0" layoutY="60.0" promptText="this was optional?" />
                   <Label fx:id="firstLbl" layoutX="282.0" layoutY="101.0" text="waiting..." textFill="WHITE" />
                   <Label fx:id="lastLbl" layoutX="282.0" layoutY="143.0" text="waiting..." textFill="WHITE" />
                </children>
