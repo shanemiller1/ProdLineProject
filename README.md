@@ -13,12 +13,11 @@ Made it for an assignment, fun level was their but not the pushing factor, what 
 *Where did you make it? What school / class?*  @FGCU and @my residence.
 
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TemplateWithInfo.md#demonstration)Demonstration
-![Program itself](https://github.com/shanemiller1/ProdLineProject/blob/master/res/PRODPROJGIF.mp4)
-
+![demo](https://github.com/shanemiller1/ProdLineProject/blob/master/res/ezgif.com-video-to-gif.gif)
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TemplateWithInfo.md#documentation)Documentation
 [JavaDoc](https://shanemiller1.github.io/ProdLineProject/)
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TemplateWithInfo.md#diagrams)Diagrams
-![Class Diagram](https://github.com/shanemiller1/ProdLineProject/blob/master/diagram.pdf)
+![Class Diagram](https://github.com/shanemiller1/ProdLineProject/blob/master/res/39f4507b3359e21452e1685d0a56283d.png)
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TemplateWithInfo.md#getting-started)Getting Started
 To get the program yourself you can download the executable jar from here [download](https://github.com/shanemiller1/exejar) 
 Or open intellij Ultimate Edition>get from version control>[enter link](https://github.com/shanemiller1/ProdLineProject) "make sure your SDK is java 1.8"
